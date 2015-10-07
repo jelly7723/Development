@@ -1,0 +1,40 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <title>winop</title>
+    <script type="text/javascript">
+        function iconfirm () {
+
+        var ibolen=confirm("是否打开一个新的窗口？");
+        if (ibolen) {
+            var iwindow=prompt("请输入网址");
+           if (iwindow!=null) {
+            window.open("iwindow","_blank");}
+       
+
+       
+        }
+        
+        
+
+        
+    }
+   </script>
+
+
+    <style type="text/css" >
+        .sty{height:20px;
+            width: 80px;
+            color: red;
+            margin: 500px;
+        }
+    </style>
+ 
+
+
+</head>
+<body>
+    <input type="button" class="sty" id="win" value="打开新窗口"  onclick="iconfirm()" />
+</body>
+</html>

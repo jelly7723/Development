@@ -1,0 +1,25 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <title>函数声明与函数表达式</title>
+    <script>
+    alert(sum(10,20))
+    function sum(arg1,arg2)
+    {
+        return arguments[0]+arguments[1]
+    }
+    //此处使用的是函数声明的写法，关于函数声明，虽然函数写在调用该函数功能的后面，但是由于js引擎的有名为函数声明提升的过程，会把通过函数声明方式定义的函数调到源代码树的顶端，即是说即使函数定义在后面，前面的相关该函数的功能还是可以实现
+
+    alert(sum1(10,30))
+    var sum1=function(ar1,ar2)
+    {
+        return ar1+ar2
+    };
+    //此处使用的是函数表达式的写法，注意函数表达式后面的分号，函数表达式就是一个表达式，是一个关于函数的句子，它跟函数声明的不同之处在于没有函数声明，js引擎不同把它调到源代码树的顶端，即sum1不能在定义之前调用，会出问题
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

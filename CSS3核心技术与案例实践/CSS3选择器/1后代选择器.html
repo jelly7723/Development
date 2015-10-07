@@ -1,0 +1,31 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <title>后代选择器</title>
+    <style>
+        *{margin:0;padding: 0}
+        body{width: 300px}
+        div{border: 1px solid black;margin:5px;padding: 5px}
+
+        div div{background-color: orange}
+    </style>
+</head>
+<body>
+    <div>1</div>
+    <div>2</div>
+    <div>3</div>
+    <div>4
+        <div>5</div>
+        <div>6</div>
+    </div>
+    <div>7
+        <div>8
+            <div>9
+                <div>10</div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <title>js阻止冒泡</title>
+    <script>
+    window.onload=function()
+    {
+        var oBtn=document.getElementById("btn")
+        var oDiv=document.getElementById("div1")
+
+        oBtn.onclick=function(ev)
+        {
+            var oEvent=ev||event
+            oDiv.style.display="block"
+
+            //阻止事件冒泡的默认行为
+            oEvent.cancelBubble=true
+        }
+
+        document.onclick=function()
+        {
+            oDiv.style.display="none"
+        }
+    }
+    </script>
+    <style>
+        #div1{height: 200px;width: 200px;background-color: #ccc;display: none}
+    </style>
+</head>
+<body>
+    <input type="button" id="btn"/>
+    <div id="div1"></div>
+</body>
+</html>

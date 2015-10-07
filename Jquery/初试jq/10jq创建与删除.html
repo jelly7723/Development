@@ -1,0 +1,34 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <title>创建与删除</title>
+    <script src="../jquery-2.1.4.js"></script>
+    <script>
+    var count=0
+    $(function()
+    {
+        $("input[type=button]").click(function()
+        {
+            var br=$("<br/>")
+            var file=$('<input type="file">' )
+            var btn=$('<input type="button"  value="remove'+(++count)+'    ">')
+
+            $("div").append(br).append(file).append(btn)
+
+            btn.click(function()
+            {
+                br.remove()
+                file.remove()
+                btn.remove()
+            })
+        })
+    })
+    </script>
+</head>
+<body>
+    <input type="file" />
+    <input type="button" value="more" />
+    <div></div>
+</body>
+</html>

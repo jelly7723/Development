@@ -1,0 +1,7 @@
+import java.util.*;
+
+public class Students {
+	public static void main(String[] args){
+		System.out.println("请输入学生的人数：");
+	}
+}

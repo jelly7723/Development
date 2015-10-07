@@ -1,0 +1,45 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <title>属性的数据特性</title>
+    <script>
+    var person={
+        name:"Jack",
+        age:28
+    }
+
+
+
+
+
+    /*好比如这个对象，person含有两个属性，分别是name和age，其中，这两个属性又都分别含有4个特性，分别是
+    1、configurable，翻译为结构的，可配置的，主要的作用是设置能否通过delete删除属性，能否修改属性的特性，能否把属性修改为访问器属性。像前面的例子中创建对象的方法，会把该值默认设为true。
+    2、enumerable，翻译为可列举的，表示能否通过for-in循环返回属性，默认是true。
+    3、writable，表示能否修改属性值，默认为true。
+    4、value，这个属性的数据值，默认undefined，当给属性设置或者修改一个值时，相当于修改这个值。如前面的name为Jack，就相当于是把Jack这个值赋予了name内部的value特性。
+    对于这四个值，假设我们要进行修改默认的特性的话，必须要使用Object.defineProperty()方法。
+
+    如下所示。*/
+
+    var person1={}
+    Object.defineProperty(person1,"name",{
+        value:"Mkk",
+    })
+    person1.name="JJJ"
+    delete person1.name
+    alert(person1.name)
+
+
+    /*Object.defineProperty()接收三个参数，第一个参数是：要改变特性的属性的对象(相当于特性的爷爷辈)的名字，第二个参数是：要改变特性的属性(相当于特性的爸爸辈，要注意加"")的名字，第三个参数就是最重要的，{要改变的特性值}
+
+    同时，还要注意，调用Object.defineProperty()方法后，其他未指定的属特性，比如上文中未显性定义的writable，configurable，enumerable的默认属性由原来的true改为了false，所以上文中关于person1.name="JJJ"这个东西，由于name的writable的特性变成了false，即无法修改value值，所以.此次修改无效，最终输出结果还是Mkk*/
+
+    /*每一个对象的属性都包括两种类型的特性，分别是数据特性和访问器特性，访问器特性暂时还没有找到相关实践，所以没有深入了解，另外，给单个属性修改特性可以使用Object.defineProperty()方法，如果要批量修改很多个属性的特性，可以使用更为方便的Object.defineProperties()方法批量修改多个特性。*/
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

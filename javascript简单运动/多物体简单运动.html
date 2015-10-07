@@ -1,0 +1,56 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <title>Document</title>
+    <style>
+        #div1,#div2,#div3{height: 100px;width:200px;background: red;margin:30px;filter:alpha(opacity:30);opacity:0.3;}
+    </style>
+    <script>
+        window.onload=function()
+        {
+            var odiv=document.getElementsByTagName("div")
+            var speed=0;
+
+            for(var i=0;i<3;i++)
+            {   
+                //注意，如果加var 则会出错
+                odiv[i].timer=null;
+                odiv[i].onmouseover=function()
+                {
+                    change(this,400);
+                }
+                odiv[i].onmouseout=function()
+                {
+                change(this,200);
+                }
+            }
+
+            function change(obj,target)
+            {   
+                {   clearInterval(obj.timer)
+                    obj.timer=setInterval(function()
+                    {
+                        speed=target>obj.offsetWidth?10:-10
+                        if(target==obj.offsetWidth)
+                        {
+                            clearInterval(obj.timer)
+                        }
+                        else
+                        {   
+                            obj.style.width=obj.offsetWidth+speed+"px";
+                        }
+                    },30)
+                }
+
+            }
+
+        }
+    </script>
+</head>
+<body>
+    <div id="div1"></div>
+    <div id="div2"></div>
+    <div id="div3"></div>
+</body>
+</html>

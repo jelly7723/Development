@@ -1,0 +1,43 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <title>操作节点的四种方法</title>
+    <script>
+    //四种方法，分别是appendChild()，insetBefore()，removeChild()，replaceChild()。一共四个主流方法操作节点，另外要注意，这四个方法操作节点前面都必须要接父节点，并且通过这四个办法删除的节点其实并没有真正的被删除，它们仍然存在于文档中，只是没有了自己的位置，处于游离漂浮状态吧。并且要注意，四种方法，有些是要传两个参数，但是要注意第一个参数肯定是newChild，第二个参数才是其它的东西。
+
+        window.onload=function(){
+            var par=document.getElementById("par")
+            //第一种方法，appendChild()
+            var fir=document.getElementById("fi")
+            var returnChild=par.appendChild(fir)        //第一个div跑到了最后的位置
+            
+            var newChi=document.createElement("div")
+            var newChi2=document.createElement("div")
+
+            //第二种方法，insertBefore()
+            par.insertBefore(newChi,null)       //传入两个参数，第一个是要插入的新节点，第二个则是最重要的要插在什么位置之前，如果是null，则和appendChild()这个方法一样。
+            par.insertBefore(newChi, par.firstChild)        //插入到第一个子节点之前，变成第一个div。
+
+            //第三种方法，removeChild()
+            par.removeChild(fir)
+            par.removeChild(par.childNodes[0])
+
+            //第四种方法，replaceChild()
+            var sp=document.createElement("span")
+            ss=document.getElementById("se")
+            par.replaceChild(sp,ss)
+        }
+    </script>
+</head>
+<body>
+    <div id="par">
+        <div id="fi"></div>
+        <div id="se"></div>
+        <div id="third"></div>
+        <div id="for"></div>
+        <div id="fiv"></div>
+        <div id="six"></div>
+    </div>
+</body>
+</html>

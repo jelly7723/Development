@@ -1,0 +1,66 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <title>Document</title>
+    <style>
+        div{width:200px;height: 200px;background: red;filter:alpha(opacity:30);opacity:0.3;margin:30px;float: left;}
+    </style>
+    <script>
+    window.onload=function()
+    {
+        var odiv=document.getElementsByTagName("div");
+        for(var i=0;i<odiv.length;i++)
+        {
+            odiv[i].timer=null;
+            odiv[i].alpha=30;
+            odiv[i].onmouseover=function()
+            {
+                move(this,100)
+            }
+            odiv[i].onmouseout=function()
+            {
+                move(this,30)
+            }
+        }
+
+        function move(obj,target)
+        {
+            clearInterval(obj.timer)
+            obj.timer=setInterval(function()
+            {   
+                //速度
+                if(target>obj.alpha)
+                {
+                    speed=3;
+                }
+                else
+                {
+                    speed=-3;
+                }
+                //精确停止，修改版
+                if(Math.abs(target-obj.alpha)<=Math.abs(speed))
+                {
+                    obj.style.opacity=target/100;
+                    obj.style.filter="alpha(opacity:"+target+")"
+                    clearInterval(obj.timer)
+                }
+                else
+                {
+                    obj.alpha+=speed
+                    obj.style.opacity=obj.alpha/100
+                    obj.style.filter="alpha(opacity:"+obj.alpha+")"
+                }
+            },30)
+            
+        }
+    }   
+    </script>
+</head>
+<body>
+    <div id="div1"></div>
+    <div id="div2"></div>
+    <div id="div3"></div>
+    <div id="div4"></div>
+</body>
+</html>

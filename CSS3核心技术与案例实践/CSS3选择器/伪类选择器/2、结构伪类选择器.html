@@ -1,0 +1,45 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <title>结构伪类选择器</title>
+    <style>
+        ul{width: 350px;margin: 30px auto;list-style: none}
+        ul li{height: 50px; background:red;margin: 5px;font-size: 20px;line-height: 50px;color: white;font-weight: bold;}
+    
+        ul>li:nth-child(1){background-color: green}
+        ul>li:nth-child(3){background-color: green}        /*这个时候无法设置，因为ul的第三个子元素不是li，而是div*/
+        ul>li:nth-child(6){background-color: orange}      /*这样设置才会有效，找到正确的子元素以及正确的位置。*/
+        /*那么上面的想找到第三个子元素要怎么改过来呢，这就要用到nth-of-type()*/
+        ul>li:nth-of-type(3){background-color: black}      /*这样修改过来就是正确的了。*/
+    
+    
+    </style>
+</head>
+<body>
+    <ul>
+        <li>1</li>
+        <li>2</li>
+        <div>3</div>
+        <div>4</div>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+        <li>6</li>
+        <li>7</li>
+        <li>8</li>
+        <li>9</li>
+        <li>10</li>
+        <li>11</li>
+        <li>12</li>
+        <li>13</li>
+        <li>14</li>
+        <li>15</li>
+        <li>16</li>
+        <li>17</li>
+        <li>18</li>
+        <li>19</li>
+        <li>20</li>
+    </ul>
+</body>
+</html>

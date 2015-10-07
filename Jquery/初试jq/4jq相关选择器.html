@@ -1,0 +1,68 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <title>jq相关选择器</title>
+    <style>
+        div{background-color: #ccc;width: 200px;height: 200px;margin:20px;float: left}
+        span{background-color: #ccc}
+    </style>
+    <script src="../jquery-2.1.4.js"></script>
+    <script>
+        $(document).ready(function()
+        {
+            $("#btn1").click(function()
+            {
+                $("#div1").css("backgroundColor","red")
+            })
+
+            $("#btn2").click(function()
+            {
+                $(".div2").css("backgroundColor","pink")
+            })
+
+            $("#btn3").click(function()
+            {
+                $("#div1,span").css("backgroundColor","blue")
+            })
+
+            $("#btn4").click(function()
+            {
+                $("*").css("backgroundColor","black")
+            })
+
+
+            $("#btn5").click(function()
+            {
+                $("#div1").next("span").css("backgroundColor","red")
+            })
+
+            $("#btn6").click(function()
+            {
+                $(".div2").nextAll("div").css("backgroundColor","black")
+            })
+
+            $("#btn7").click(function()
+            {
+                $("#div3").siblings("span").css("backgroundColor","red")
+            })
+        }) 
+    </script>
+</head>
+<body>
+    <div id="div1">24</div>
+    <span>222</span>
+    <div class="div2">55</div>
+    <div class="div2">56</div>
+    <div id="div3">142</div>
+    <span>87\7</span>
+    <div>4848</div>
+    <input type="button" id="btn1" />
+    <input type="button" id="btn2" />
+    <input type="button" id="btn3" />
+    <input type="button" id="btn4" />
+    <input type="button" id="btn5" />
+    <input type="button" id="btn6" />
+    <input type="button" id="btn7" />
+</body>
+</html>

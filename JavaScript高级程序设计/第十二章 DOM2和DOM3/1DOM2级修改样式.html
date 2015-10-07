@@ -1,0 +1,31 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <title>DOM2级修改样式</title>
+    <script>
+    window.onload=function(){
+        var ddd=document.getElementsByTagName("div").item(0)
+        ddd.style.display="block"
+        ddd.style.backgroundColor="red"
+        alert(ddd.style.backgroundColor)
+
+        //使用cssText读取以及修改css样式
+        alert(ddd.style.cssText)
+        //会输出所有的相关属性。
+        ddd.style.cssText="display:block;width:600px;height:600px;background:blue;font-size:60px;"
+        //事实证明通过这个方法修改为元素修改多项变化是最快捷的方式。当然要注意，一旦使用了该属性修改，那么元素的原属性会一并消失，要重新设置。即会抹掉元素原来的css规则。此处的原规则指的是行内样式。
+        //另外，注意一点，很重要的一点，cssText读取以及修改的均是style行内样式，对于非行内样式它无法修改以及读取。最大的缺陷。
+
+
+        //最后说一点。关于自己类库中写的读取元素的属性，getComputedStyle()和currentStyle这两个方法，其实都是DOM2级的方法。
+    }
+    </script>
+    <style>
+    div{color: red}
+    </style>
+</head>
+<body>
+    <div style="display:none">123456789</div>
+</body>
+</html>

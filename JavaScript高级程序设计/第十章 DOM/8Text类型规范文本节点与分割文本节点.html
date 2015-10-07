@@ -1,0 +1,32 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <title>Text类型规范文本节点与分割文本节点</title>
+    <script>
+    window.onload=function(){
+    var ele=document.createElement("div")
+    var text1=document.createTextNode("hello")
+    var text2=document.createTextNode(" world")
+    ele.appendChild(text1)
+    ele.appendChild(text2)
+    document.body.appendChild(ele)
+    alert(ele.childNodes.length)
+    //输出2，因为ele有两个文本节点。
+    ele.normalize()
+    //调用normalize()方法之后，合并了这两节子文本节点变成了一个。所以最后输出1。
+    alert(ele.childNodes.length)
+
+
+    var newNode=ele.firstChild.splitText(5)
+    //分割文本节点。这行代码的意思是把ele的子文本节点分割成两段，在5的位置，也即是空格的位置截断，不包括空格。
+    alert(ele.childNodes.length)        //输出2，因为被分成了两个子节点。
+    alert(ele.firstChild.nodeValue)
+    alert(newNode.nodeValues)
+}
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

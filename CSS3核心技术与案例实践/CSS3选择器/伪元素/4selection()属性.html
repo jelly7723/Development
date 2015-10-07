@@ -1,0 +1,17 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <title>::selection()属性</title>
+    <style>
+        p:nth-of-type(1)::selection{background-color: red;color: yellow}
+        /*这个伪元素非常好用，但是遗憾的是只有IE9支持，并且在火狐上的话要写前缀*/
+        p:nth-of-type(1)::-moz-selection{background-color: red;color: yellow}
+        /*同时要注意，该元素只接受两个参数的设置，分别是前景色和背景色*/
+    </style>
+</head>
+<body>
+    <p>ppppppppppppppppp</p>
+    <p>sssssssssssssss</p>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <title>Document</title>
+    <style>
+        #div1{height: 200px;width: 200px;background-color: red;opacity: 0.3;filter:alpha(opacity:30);}
+    </style>
+
+    <script>
+    window.onload=function(){
+        var oDiv=document.getElementById("div1")
+        var alpha=30
+        var speed=0
+        var timer=null
+        oDiv.onmouseover=function(){
+            start(100)
+        }
+        oDiv.onmouseout=function(){
+            start(30)
+        }
+
+
+        function start(iTarget){
+            clearInterval(timer)
+            timer=setInterval(function(){
+                iTarget>alpha?speed=10:speed=-10
+                if(alpha==iTarget){
+                    clearInterval(timer)
+                }
+                else{
+                alpha+=speed
+                oDiv.style.opacity=alpha/100
+                oDiv.style.filter="alpha(opacity:'+alpha+')"}
+                }
+            ,30)
+        }
+    }
+    </script>
+</head>
+<body>
+    <div id="div1"></div>
+</body>
+</html>

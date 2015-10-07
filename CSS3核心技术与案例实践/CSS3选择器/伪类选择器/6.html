@@ -1,0 +1,38 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <title>结构伪类选择器</title>
+    <style>
+        ul{width: 350px;height: 600px;margin: 300px auto;text-align: center;list-style: none}
+        ul li{width: 50px; height: 50px; background:red;border-radius: 50px;text-align:center;margin: 5px;display: inline-block;font-size: 20px;line-height: 50px;color: white;font-weight: bold;}
+
+
+        ul>li:nth-last-child(-n+3){background-color: black}         /*注意此处使用的是nth-last-child，也即是n是从最后一个元素开始数起的，所以最终后三个元素会被匹配到。*/
+    </style>
+</head>
+<body>
+    <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+        <li>6</li>
+        <li>7</li>
+        <li>8</li>
+        <li>9</li>
+        <li>10</li>
+        <li>11</li>
+        <li>12</li>
+        <li>13</li>
+        <li>14</li>
+        <li>15</li>
+        <li>16</li>
+        <li>17</li>
+        <li>18</li>
+        <li>19</li>
+        <li>20</li>
+    </ul>
+</body>
+</html>

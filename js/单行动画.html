@@ -1,0 +1,63 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <title>speed</title>
+    <style type="text/css">
+
+        *{margin:0;
+           padding: 0}
+         .one{width: 200px;
+                 height: 200px;
+                 background-color:red;
+                 
+                 left: -200px;
+                 position: relative;
+                  }
+         .two{width: 80px;
+                 height: 80px;
+                 background-color: yellow;
+                 position: absolute;
+                 left: 200px;
+                 top: 60px;
+                 display: block;}
+    </style>
+    <script type="text/javascript">
+    window.onload=function(){
+        var click=document.getElementById("itwo");
+        click.onmouseover=function(){
+            starmove(0);
+        }
+        click.onmouseout=function(){
+            starmove(-200);
+
+        }
+
+}
+ var timer=null;
+   function starmove(iTarget)
+{       var ileft=document.getElementById("ione");
+         
+         clearInterval(timer);
+         var speed=0;
+         if(iTarget>ileft.offsetLeft)
+            {speed=10;}
+        else{speed=-10;};
+            timer=setInterval( 
+                function ()
+                { if(ileft.offsetLeft==iTarget)
+                {clearInterval(timer)}
+                else{
+                ileft.style.left=ileft.offsetLeft+speed+'px';}
+            },30);
+                
+ }
+    </script>
+
+</head>
+<body>
+        <div class="one" id="ione">
+            <span class="two" id="itwo">分享</span>
+        </div>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <title>TransformBig</title>
+    <style>
+        #img1{position: absolute;left:0;top: 0;margin:50px;}
+        #img2{position: absolute;right: 0;top: 0;}
+        #img2_wrap{height: 300px;width: 300px;overflow: hidden;position: relative;margin-left: 1000px;margin-top:50px;}
+    </style>
+    <script src="js/getPos.js"></script>
+    <script src="js/getStyle(obj,name).js"></script>
+    <script>
+    window.onload=function()
+    {   
+        var omg1=document.getElementById("img1")
+        var omg2=document.getElementById("img2")
+        var wrap=document.getElementById("img2_wrap")
+
+        omg1.onmousemove=function(ev)
+        {
+            var oEvent=ev||event
+            var pos=getPos(oEvent)
+            var mouseX=parseInt(pos.x)
+            var mouseY=parseInt(pos.y)
+            var omg_left=parseInt(getStyle(omg1,"left"))
+            var omg_top=parseInt(getStyle(omg1,"top"))
+            var relativeX=mouseX-omg_left-50
+            var relativeY=mouseY-omg_top-50
+            
+            omg2.style.left=-relativeX*2+"px"
+            omg2.style.top=-relativeY*2+"px"
+        }
+    }
+
+    </script>
+</head>
+<body>
+    <img src="img/秘书部大海_2345看图王.jpg" height="300" width="300" alt="" id="img1" />
+    <div id="img2_wrap">
+    <img src="img/秘书部大海_2345看图王.jpg" height="900" width="900" alt="" id="img2" />
+    </div>
+</body>
+</html>

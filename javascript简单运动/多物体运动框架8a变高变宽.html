@@ -1,0 +1,61 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <title>Document</title>
+    <style>
+        #div1,#div2{height: 200px;width: 200px; background: red;float: left;margin:30px;}
+    </style>
+    <script src="javascript类库/getStyle(obj,name).js"></script>
+    <script>
+    window.onload=function()
+    {
+        var odiv=document.getElementsByTagName("div")
+        for(var i=0;i<odiv.length;i++)
+        {
+            odiv[i].timer=null
+            var cur=0
+        }
+        odiv[0].onmouseover=function()
+        {
+            move(this,"width",400)
+        }
+        odiv[0].onmouseout=function()
+        {
+            move(this,"width",200)
+        }
+        odiv[1].onmouseover=function()
+        {
+            move(this,"height",400)
+        }
+        odiv[1].onmouseout=function()
+        {
+            move(this,"height",200)
+        }
+
+        function move(obj,attr,value)
+        {   
+            clearInterval(obj.timer)
+            obj.timer=setInterval(function()
+            {   cur=parseInt(getStyle(obj,attr))//三个值，cur是当前值，value是目标值，最后obj.style[attr]是赋值
+                speed=(value-cur)/10;
+                speed=speed>0?Math.ceil(speed):Math.floor(speed)
+                if(cur==value)
+                {
+                    clearInterval(obj.timer)
+                }
+                else
+                {
+                    obj.style[attr]=cur+speed+"px"
+                }
+            },30)
+
+        }
+    }
+    </script>
+</head>
+<body>
+    <div id="div1"></div>
+    <div id="div2"></div>
+</body>
+</html>

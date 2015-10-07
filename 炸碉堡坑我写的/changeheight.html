@@ -1,0 +1,37 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <title>Document</title>
+    <style>
+        div{width: 300px;height: 80px;overflow: hidden;border:solid;word-break:break-word;}
+        /*高度和宽度都是随便给的。但是overflow一定要设，还有自动换行。*/
+    </style>
+    <script src="javascript类库/getStyle(obj,name).js"></script>
+    <script>
+        window.onload=function(){
+            var oDiv=document.getElementsByTagName("div")[0];
+            var timer=null;
+            oDiv.onmouseover=function(){
+                clearInterval(timer);
+                timer=setInterval(function(){
+                    var oHeight=parseInt(getStyle(oDiv,"height"));
+                    if(oHeight==500){
+                        clearInterval(timer);
+                    }
+                    else{
+                        oDiv.style.height=oHeight+10+"px";
+                    }
+                  
+                },30)
+            }
+        }
+    </script>
+</head>
+<body>
+    <div>
+        <h1>1111111111111111</h1>
+        <p>55555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555</p>
+    </div>
+</body>
+</html>

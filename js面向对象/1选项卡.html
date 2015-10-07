@@ -1,0 +1,45 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <title>选项卡</title>
+    <style>
+        #parent div{width: 200px;height: 200px;font-size: 18px;background-color: red;display: none;}
+    </style>
+    <script>
+    window.onload=function()
+    {
+        par=document.getElementById("parent")
+        btn=document.getElementsByTagName("input")
+        oDiv=par.getElementsByTagName("div")
+
+        for(var i=0;i<btn.length;i++)
+        {
+            btn[i].index=i
+            btn[i].onclick=function()
+            {
+                for(var i=0;i<btn.length;i++)
+                {
+                    if(oDiv[i].style.display=="block")
+                    {
+                        oDiv[i].style.display="none"
+                    }
+                }
+
+                oDiv[this.index].style.display="block";
+            }
+        }
+    }
+    </script>
+</head>
+<body>
+    <div id="parent">
+        <input type="button" value="1" />
+        <input type="button" value="2"/>
+        <input type="button" value="3"/>
+        <div style="display:block">11111</div>
+        <div style="display:none">222222</div>
+        <div style="display:none">3333</div>
+    </div>
+</body>
+</html>

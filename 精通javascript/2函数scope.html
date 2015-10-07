@@ -1,0 +1,26 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <title>Document</title>
+    <script>
+    /*==需要注意的是，js只有函数作用域，没有块级作用域==*/
+    var foo="test"
+    if(true){
+        var foo="new"
+    }
+    alert(foo=="new")   //true，因为没有块级作用域，即if作用域中定义的foo其实是在全局中定义的，意味着在if之外也可以访问到这个变量。
+
+    var tes="tes"
+    function tt(){
+        var tes="ne"
+    }    
+    tt()
+    alert(tes=="ne")    //false，因为存在函数作用域，即tt()函数中定义的tes只在函数中起作用，在函数外都不起作用。
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

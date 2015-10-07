@@ -1,0 +1,34 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <title>原型模式存在的问题</title>
+    <script>
+        //1、由于原型模式省略了为构造函数传参，所以所有实例都是取得相同的属性值。
+        //2、修改实例上的某个属性时，如果这个属性来自原型，那么这次修改会影响到其他使用该原型对象的实例。
+        function Person(){}
+
+        //下面用到的是另一种创建原型对象的方法，在写多个属性时更为简洁，而且看起来更好的封装了这个对象。
+        //使用该方法，一定要重点切记各种标点符号的使用它规则，错一个就全错了。
+        Person.prototype={
+            constructor:Person,                 //此处的constructor可以不写，但是如果不写的话constroctor就不再是指向Person了，而是指向Object，这是该方式的一个缺点。
+            name:"Nick",
+            age:28,
+            job:"student",
+            friends:["Jack","John"],
+            sayFriends:function(){alert(this.friends)}
+        }
+        var person=new Person()
+        var person2=new Person()
+        person.sayFriends()     //Jack,John
+        person.friends.push("Mkk")  
+        person.sayFriends()        //Jack,John,Mkk
+        person2.sayFriends()        //Jack,John,Mkk
+
+        //由于friends是在原型中的，所以修改person实例的friens属性，最终会导致把整个原型的friends的属性都修改了，所以person2的属性也修改了。
+        //这个就是原型模式的最大问题，最终提出的解决方法就是共用原型模式和构造函数，两者一起创建对象，原型模式负责写入函数，构造函数负责写入和修改不同的属性值。
+    </script>
+</head>
+<body>
+</body>
+</html>

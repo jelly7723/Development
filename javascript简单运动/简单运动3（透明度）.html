@@ -1,0 +1,51 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <title>Document</title>
+    <style>
+        #div1{height: 200px;width:200px;background: red;filter:alpha(opacity:30);opacity: 0.3}
+    </style>
+    <script>
+        window.onload=function()
+        {
+            var odiv=document.getElementById("div1")
+            var timer=null;
+            var speed=0;
+            var alpha=30;
+
+            odiv.onmouseover=function()
+            {
+                move(100)
+            }
+            odiv.onmouseout=function()
+            {
+                move(30)
+            }
+
+            function move(iTarget)
+            {
+                clearInterval(timer)
+                timer=setInterval(function()
+                    {
+                        if(iTarget==alpha)    
+                        {
+                            clearInterval(timer)
+                        }
+                        else
+                        {   //有了改进，正常来说速度判断放下面好点，虽然优化作用不明显
+                            speed=iTarget==100?10:-10;
+                            alpha+=speed;
+                            //兼容IE和Chrome+i+是什么鬼啊   
+                            odiv.style.filter="alpha(opacity:"+alpha+")";
+                            odiv.style.opacity=alpha/100;
+                        }
+                    }, 30)
+            }
+        }
+    </script>
+</head>
+<body>
+    <div id="div1"></div>
+</body>
+</html>

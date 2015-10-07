@@ -1,0 +1,41 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <title>Document类型</title>
+    <script>
+    alert(document.documentElement)         //取得对html的引用
+    alert(document.childNodes.length)         //2，因为document文档下面的子元素有两个，分别是doctype和html。
+    alert(document.childNodes[1])                //取得对html的引用
+    alert(document.lastChild)                        //取得对html的引用
+
+    var html=document.documentElement    //取得对html的引用
+    var body=document.body                         //取得对body元素的引用
+
+    alert(document.title=123)           //title是document类型的一个属性。此处修改title值并输出。
+    alert(document.URL)
+
+    //平时我们经常使用的查找元素其实就是document的一些方法，比如说getElementById()，getElementsByTagName()
+    //同时还要注意，使用getElementById()方法的时候，如果存在多个相同的ID，原则上是返回文档中第一次出现的那个。在IE7中，如果input的name属性值和id的属性值一样，那么有可能会检索到input元素。奇葩浏览器。所以尽量不要把name和id设成同样的。
+    
+    //getElementsByTagName的一些进阶用法。
+    var list=document.getElementsByTagName("div")
+    var l1=list.item(0)
+    var l2=list.namedItem("bb")
+    var li1=list[0]              //其实从本质上来说，之所以list[0]可以找到索引值为第一的那个元素，我觉得本质上是因为它调用了item(0)方法
+    var li2=list["bb"]         //同样，list["bb"]也是一样，js引擎后台调用了list.namedItem("bb")。这个当作进阶理解就好，不过最好也要学会这个通过named来寻找元素的方法。或许会很好用，通过tag的name来寻找到某个特定的元素。
+    alert(l1==li1)
+    alert(l2==li2)
+
+
+    var all=document.getElementsByTagName("*")          //如果想获取全部元素，可以给一个*号，要注意两点，*要有""，即"*"，第二点，不一定是document，任何一个想获取所有子元素的父元素都可以使用这个方法。很管用的方法。
+
+
+    </script>
+</head>
+<body>
+    <div name="aa"></div>
+    <div name="bbb"></div>
+    <div name="ccc"></div>
+</body>
+</html>

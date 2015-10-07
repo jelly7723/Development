@@ -1,0 +1,73 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <title>鼠标拖拽</title>
+    <style>
+        #div1{width: 200px;height: 200px;background-color: red;position: absolute;left: 0px;top: 0px;}
+    </style>
+    <script src="javascript类库/getPos.js"></script>
+    <script src="javascript类库/getStyle(obj,name).js"></script>
+    <script>
+        window.onload=function()
+        {
+            var oDiv=document.getElementById("div1")
+            var reativeX=0
+            var reativeY=0
+
+            oDiv.onmousedown=function(ev)
+            {
+                var oEvent=ev||event
+                var oDiv=document.getElementById("div1")
+                var pos=getPos(oEvent)
+                var start_mouseX=parseInt(pos.x)
+                var strat_mouseY=parseInt(pos.y)
+                var start_divX=parseInt(getStyle(oDiv,"left"))
+                var start_divY=parseInt(getStyle(oDiv,"top"))
+                reativeX=start_mouseX-start_divX
+                reativeY=strat_mouseY-start_divY    
+
+                //之所以是document不是oDiv是为了防止鼠标跑出盒子后停止移动
+                document.onmousemove=function(ev)
+                {
+                    var oEvent1=ev||event
+                    var pos1=getPos(oEvent1)
+                    var move_mouseX=parseInt(pos1.x)
+                    var move_mouseY=parseInt(pos1.y)
+                    var target_X=move_mouseX-reativeX
+                    var target_Y=move_mouseY-reativeY
+
+                    //if else if函数判断当前的距离是否超出浏览器窗口，以防止滚动条的出现
+                    if(target_X<0)
+                    {
+                        target_X=0
+                    }
+                    else if(target_X>document.documentElement.clientWidth-parseInt(getStyle(oDiv,"width")))
+                    {
+                        target_X=document.documentElement.clientWidth-parseInt(getStyle(oDiv,"width"))
+                    }
+
+                    oDiv.style.left=target_X+"px"
+                    oDiv.style.top=target_Y+"px"
+                }       
+
+                document.onmouseup=function()
+                {
+                    document.onmousemove=null;
+                    document.onmouseup=null;
+                }
+
+                return false;
+            }
+
+            
+
+
+
+        }
+    </script>
+</head>
+<body>
+    <div id="div1"></div>
+</body>
+</html>

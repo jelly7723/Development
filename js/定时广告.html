@@ -1,0 +1,78 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <title>settimeout</title>
+    <style type="text/css">
+    *{margin: 0 auto;
+        padding: 0;
+    }
+    .ad{margin: 0 auto;
+        width: 950px;
+        height: auto;
+        background: #ccc;
+        text-align: center;
+        color: red;
+        display: block;
+        }
+
+    .content{margin: 0 auto;
+        width: 640px;
+        height:200px;
+        background-color:#FF80FF ;
+        font-size: 24px;
+        font-weight: bold;
+        text-align: center;
+        
+        }
+
+    </style>
+
+    <script type="text/javascript">
+
+        var h=0;
+        
+        function addH(){
+            if (h<300) {
+            h+=5;
+        document.getElementById("jsad").style.height=h+"px";
+        }
+         else{
+            return;
+        }
+            setTimeout("addH()", 30);
+  
+    }
+    window.onload=function(){
+        addH();
+        setTimeout("subH()", 5000);
+    }
+    function subH(){
+        if(h>0){
+            h-=5;
+            document.getElementById("jsad").style.height=h+"px";
+        }
+        else{
+                    document.getElementById("jsad").style.display="none";          
+                    return;
+
+
+        }
+        setTimeout("subH()", 30);
+    }
+
+    </script>
+        }
+</head>
+<body>
+    <div class="ad" id="jsad">
+    <h2>我是广告层</h2>
+    <h2>我是广告内容</h2>
+    </div>
+
+    <div class="content" id="jscontent">
+    我是标题<br />
+    我是正文
+    </div>
+</body>
+</html>

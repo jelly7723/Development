@@ -1,0 +1,22 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <title>bind事件绑定</title>
+    <script src="../jquery-2.1.4.js"></script>
+    <script>
+        $(function()
+        {
+            $("h5").bind("click",function()
+                {
+                    $(this).next().show("slow")
+                    //show()函数有三个参数，分别是slow,normal,fast。当然，还可以通过设置1000,30000等等时间值来改变运动时间
+                })
+        })
+    </script>
+</head>
+<body>
+    <h5>你妈炸了！！</h5>
+    <p style="display:none">我日你妈卵子，你妈才炸了！！</p>
+</body>
+</html>

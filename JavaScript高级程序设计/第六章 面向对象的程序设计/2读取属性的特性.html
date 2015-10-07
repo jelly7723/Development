@@ -1,0 +1,23 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <title>读取属性的特性</title>
+    <script>       
+    var person1={}
+
+    Object.defineProperty(person1,"name",{
+        value:"Mkk",
+    })
+
+    var descriptor=Object.getOwnPropertyDescriptor(person1,"name")
+    alert(descriptor.value)
+    alert(descriptor.writable)
+
+    //要想读取一个属性内部的特性时，可以使用Object.getOwnPropertyDescriptor，翻译过来大概意思就是获得我自己的属性的描述符(特性)。注意兼容，低版本浏览器貌似不兼容写入以及读取特性这个方法，不过学习这两个有助于理解js本质。
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

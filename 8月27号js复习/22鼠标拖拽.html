@@ -1,0 +1,50 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <title>Document</title>
+    <style>
+        div{width: 100px;height: 100px;background-color: red;position: absolute;left: 0;top: 0
+        }
+    </style>
+    <script>
+    window.onload=function(){
+
+        var oDiv=document.getElementsByTagName("div")[0]
+        var scrollTop=0
+        var scrollLeft=0
+        oDiv.onmousedown=function(ev){
+
+            scrollTop=document.documentElement.scrollTop||document.body.scrollTop
+            scrollLeft=document.documentElement.scrollLeft||document.body.scrollLeft
+            var oEvent=ev||event
+            var xPos=scrollLeft+oEvent.clientX
+            var yPos=scrollTop+oEvent.clientY
+            var xDiv=oDiv.offsetLeft
+            var yDiv=oDiv.offsetTop
+            var xRelative=xPos-xDiv
+            var yRelative=yPos-yDiv
+
+            document.onmousemove=function startMove(ev){
+                var oEvent2=ev||event
+                scrollTop=document.documentElement.scrollTop||document.body.scrollTop
+                scrollLeft=document.documentElement.scrollLeft||document.body.scrollLeft
+                var xNowPos=scrollLeft+oEvent2.clientX
+                var yNowPos=scrollTop+oEvent2.clientY
+                oDiv.style.left=xNowPos-xRelative+"px"
+                oDiv.style.top=yNowPos-yRelative+"px"
+
+            }
+
+            document.onmouseup=function stopMove(){
+                document.onmousemove=null
+                document.onmouseup=null
+            }
+        }
+    }
+    </script>
+</head>
+<body style="height:2000px">
+    <div></div>
+</body>
+</html>

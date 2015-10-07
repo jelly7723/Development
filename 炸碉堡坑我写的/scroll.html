@@ -1,0 +1,93 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <title>Document</title>
+    <style>
+        #wrap{height:500px;width:500px;margin:200px auto;border:solid;overflow: hidden;position:relative;}    
+        #div_wrap div{width: 300px;height: 300px;float: left}
+        #div_wrap{width: 1500px;height: 300px;position:absolute;left:0;}
+        #scroll_wrap{display: block;width: 150px;height: 30px;background: gray;margin:400px auto;position: relative}
+        #scroll{display: block;width: 50px;height: 30px;background:orange;position: absolute;left: 0px;}
+        /*==scroll_wrap和scroll两者的width必须成比例，两者的比刚好等于div_wrap与wrap的比例。==*/
+    </style>
+    <script src="javascript类库/getStyle(obj,name).js"></script>
+    <script src="javascript类库/getPos.js"></script>
+    <script>
+    window.onload=function(){
+
+            var oDiv=document.getElementById("scroll")
+            var oScroll=document.getElementById("div_wrap")
+            var reativeX=0
+            var reativeY=0
+
+            oDiv.onmousedown=function(ev)
+            {
+                var oEvent=ev||event
+                var oDiv=document.getElementById("scroll")
+                var pos=getPos(oEvent)
+                var start_mouseX=parseInt(pos.x)
+                var strat_mouseY=parseInt(pos.y)
+                var start_divX=parseInt(getStyle(oDiv,"left"))
+                var start_divY=parseInt(getStyle(oDiv,"top"))
+                reativeX=start_mouseX-start_divX
+                reativeY=strat_mouseY-start_divY    
+
+                //之所以是document不是oDiv是为了防止鼠标跑出盒子后停止移动
+                document.onmousemove=function(ev)
+                {
+                    var oEvent1=ev||event
+                    var pos1=getPos(oEvent1)
+                    var move_mouseX=parseInt(pos1.x)
+                    var move_mouseY=parseInt(pos1.y)
+                    var target_X=move_mouseX-reativeX
+                    var target_Y=move_mouseY-reativeY
+
+                    //if else if函数判断当前的距离是否超出窗口
+                    if(target_X<0)
+                    {
+                        target_X=0
+                    }
+                    else if(target_X>100)
+                    {
+                        target_X=100
+                    }
+
+                    oDiv.style.left=target_X+"px"
+                    oDiv.style.top=target_Y+"px"
+                    oScroll.style.left=-target_X*10+"px"
+
+
+                }       
+
+                document.onmouseup=function()
+                {
+                    document.onmousemove=null;
+                    document.onmouseup=null;
+                }
+
+                return false;
+            }
+
+            
+
+
+
+        }
+    </script>
+</head>
+<body>
+    <div id="wrap">
+        <div id="div_wrap">
+            <div style="background:red"></div>
+            <div style="background:orange"></div>
+            <div style="background:green"></div>
+            <div style="background:yellow"></div>
+            <div style="background:pink"></div>
+        </div>
+        <span id="scroll_wrap">
+            <span id="scroll"></span>
+        </span>
+    </div>
+</body>
+</html>

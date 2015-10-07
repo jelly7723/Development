@@ -1,0 +1,35 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <title>创建Date对象以及一些基本方法</title>
+    <script>
+        var somedate=new Date()
+        alert(somedate)     //打开网页的当前时间，不同浏览器的格式不同，但时间都一样
+        //创建Date对象，如果Date()里面不加东西，则浏览器自动获取当前时间
+        
+        var somedate2=new Date(Date.parse("May 20,2015"))       //May 20,2015
+        alert(somedate2)
+        //使用Date.parse("")方法自定义时间
+        
+        var somedate3=new Date("May 20,2015")
+        alert(somedate3)
+        //在new Date("")内部直接加时间，效果与parse()一样，后台自动调用parse()方法，所以平时可以直接写在new里面
+        
+        var somedate4=new Date(Date.UTC(2015,1,5))
+        alert(somedate4)    //2015,2,5
+        //UTC()方法，直接在UTC()里面输入数字即可，无需""，即输入的是数字而非字符串，另外要注意，关于第二个月份的问题，默认是从0开始，即0代表1月份，11代表12月份，写月份的时候要注意相应的减去1
+        
+        var somedate5=new Date(2015,0)
+        alert(somedate5)        //2015,1
+        //在new Date()内部直接加时间也是可以的
+
+
+        //综上，在创建Date()对象时，如果要自定义对象的时间，可以直接在new Date()内加入相应时间，根据格式不同，系统后台调用的parse()和UTC()方法也不同
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

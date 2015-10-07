@@ -1,0 +1,32 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <title>Box-Shadow</title>
+    <style>
+        .wrap{position: relative;height: 300px;width: 500px;background-color: white;margin: 200px auto;padding: 10px;
+                    box-shadow: 0 1px 20px rgba(0,0,0,0.3)}
+
+        .wrap::before{content: "";position: absolute;
+        width: 90%;height: 80%;
+        -webkit-transform:skew(-12deg) rotate(-4deg);
+        bottom:16px;left: 31px;
+        box-shadow: 0 8px 30px rgba(0,0,0,0.8);
+        z-index: -1}
+
+         .wrap::after{content: "";position: absolute;
+        width: 90%;height: 80%;
+        -webkit-transform:skew(12deg) rotate(4deg);
+        bottom:16px;right: 31px;
+        box-shadow: 0 8px 30px rgba(0,0,0,0.8);
+        z-index: -1}
+
+        /*==这些代码都可以直接复制粘贴使用。不过要加上相关的前缀。==*/
+    </style>
+</head>
+<body>
+    <div class="wrap">
+        <img src="12225218_152642629175_2.jpg" height="300" width="500"/>
+    </div>
+</body>
+</html>

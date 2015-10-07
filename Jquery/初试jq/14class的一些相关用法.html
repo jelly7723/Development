@@ -1,0 +1,57 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <title>关于class的一些用法</title>
+    <style>
+        .obig{font-size: 30px;}
+        .ocolor{color:red;}
+    </style>
+    <script src="../jquery-2.1.4.js"></script>
+    <script>
+        $(function()
+        {
+            $("input:eq(0)").click(function()
+            {
+                $("p").attr("class","")
+            })
+
+            $("input:eq(1)").click(function()
+            {
+                $("p").addClass("ocolor")
+            })
+
+            $("input:eq(2)").click(function()
+            {
+                $("p").removeClass("obig")
+                //等价于$("p").attr("class","")
+                //同时注意，当removeClsss()不附加内容时，则表示把所有class属性去掉
+            })
+
+            $("input:eq(3)").click(function()
+            {
+                $("p").toggleClass("ocolor")
+            })
+
+            $("input:eq(4)").click(function()
+            {
+                alert($("p").hasClass("obig"))
+                //alert($("p").is(".obig"))
+                //两种方法都可以
+            })
+        })
+    </script>
+</head>
+<body>
+    <p class="obig">54856487484321</p>
+    <input type="button" />
+    <input type="button" />
+    <input type="button" />
+    <input type="button" />
+    <input type="button" />
+    <input type="button" />
+    <input type="button" />
+    <input type="button" />
+</body>
+</html>
+

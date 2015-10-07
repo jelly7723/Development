@@ -1,0 +1,29 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <title>jq与DOM的转换</title>
+    <script src="../jquery-2.1.4.js"></script>
+    <script>
+    $(document).ready(function()
+    {
+        //把DOM元素转换为jq对象
+        var DOM_p=document.getElementById("ppp")
+        var jq_p=$(DOM_p)
+        alert(DOM_p.innerHTML)
+        alert(jq_p.html())
+
+        //把jq对象转换为DOM元素。两种方法
+        var jq_p2=$("#ppp")
+        var DOM_p2=jq_p2[0]
+        alert(DOM_p2.innerHTML)
+
+        var DOM_p3=jq_p2.get(0)
+        alert(DOM_p3.innerHTML)
+    })
+    </script>
+</head>
+<body>
+    <p id="ppp">aasfasf</p>
+</body>
+</html>

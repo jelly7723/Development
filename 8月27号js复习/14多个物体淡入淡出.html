@@ -1,0 +1,47 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <title>Document</title>
+    <style>
+        div{width: 100px;height: 100px;background-color: red;opacity: 0.3;filter:alpha(opacity:30);margin:50px;}
+    </style>
+    <script>
+        window.onload=function(){
+            var aDiv=document.getElementsByTagName("div")
+            for(var i=0;i<aDiv.length;i++){
+                aDiv[i].timer=null
+                aDiv[i].alpha=30
+                aDiv[i].onmouseover=function(){
+                    start(this,100)
+                }
+                aDiv[i].onmouseout=function(){
+                    start(this,30)
+                }
+            }
+
+            function start(obj,iTarget){
+                clearInterval(obj.timer)
+                obj.timer=setInterval(function(){
+                    var speed=0
+                    iTarget>obj.alpha?speed=10:speed=-10
+                    if(iTarget==obj.alpha){
+                        clearInterval(obj.timer)
+                    }
+                    else{
+                        obj.alpha+=speed
+                        obj.style.opacity=obj.alpha/100
+                        obj.style.filter="alpha(opacity:'+obj.alpha+'"
+                    }
+                },30)
+            }
+
+        }
+    </script>
+</head>
+<body>
+    <div></div>
+    <div></div>
+    <div></div>
+</body>
+</html>

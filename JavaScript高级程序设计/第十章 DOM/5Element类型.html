@@ -1,0 +1,41 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <title>Element类型设置属性。</title>
+    <script>
+        //js通过document类型来获取整个html页面。通过element类型提供对元素标签，子节点以及特性的访问
+        //获取元素的标签名有两种方法，nodeName和tagName。当节点类型是Element时nodeName才是标签名。当为Document时nodeName是#document。
+        window.onload=function(){
+            var ddd=document.getElementById("d")
+            alert(ddd.tagName)
+            alert(ddd.nodeName)
+            //注意，最终输出的div都是大写的。也即是DIV，所以有时候我们想检测某个某个元素是否是特定标签，最好事先先把它转换为小写。
+            
+            //另外，关于元素标签特性的操作全是通过Element类型来进行的。
+            //任何元素的所有特性（不包括自定义特性），可以通过两种方式来访问，一种是attrbute方法，另一种是通过DOM元素本身的属性来访问。
+            var p=document.getElementById("ac")
+            alert(p.id)
+            alert(p.className)          //注意此处是className而并非class。class是js保留字，所以最终用了className来代替DOM的class属性。
+            alert(p.getAttribute("id"))
+            alert(p.getAttribute("class"))
+            alert(p.flag)           //输出undefined，因为flag不是元素的默认特性，所以DOM上也不存在该默认方法，自定义属性的访问只能通过attribute。
+            alert(p.getAttribute("flag"))       //访问自定义属性只能用attribute方法，另外setAttribute()方法还可以修改自定义属性。
+            //由于存在某些问题，所以开发人员很少使用getAttribute()方法来访问特性。一般都是用默认的DOM操作，除了自定义属性。
+            
+            p.setAttribute("class","bbb")
+            p.className="bb"            //同样，关于属性的操作，一般除了自定义属性的操作，其他默认属性都是推荐使用DOM方法。  
+            ddd.className="aaaaaa"          //即使ddd原先并没有设置class属性，仍然可以通过DOM方法来新增或者修改默认属性。
+
+            ddd.className=""        //删除class属性。同样attribute也有相应1方法。
+            p.removeAttribute("class")          //一般少用。
+
+
+        }
+    </script>
+</head>
+<body>
+    <div id="d"></div>
+    <div id="ac" title="s" class="aa" flag="0"></div>
+</body>
+</html>

@@ -1,0 +1,16 @@
+import java.util.*;
+
+public class Arr {
+	public static void main(String[] args){
+		int arr[]=new int[5];
+		Scanner in=new Scanner(System.in);
+		for(int i=0;i<5;i++){
+			System.out.println("please enter no."+i+" student's score:0");
+			arr[i]=in.nextInt();
+		}
+		Arrays.sort(arr);
+		for(int i=0;i<5;i++){
+			System.out.println(arr[i]);
+		}
+	}
+}

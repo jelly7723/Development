@@ -1,0 +1,106 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <title>js放大镜改良版本</title>
+    <style>
+        *{margin:0;padding: 0}
+        #small_wrap{position: relative;left: 100px;top: 100px;width: 300px;height: 180px;}
+        #big_wrap{position: relative;left: 600px;top: -80px;width: 600px;height: 360px;overflow: hidden;display: none}
+        #float_box{width: 100px;height: 60px;background-color: yellow;opacity: 0.3;filter:alpha(opacity:30);position: absolute;left:0;top:0;z-index: 100;display: none}
+        #wrap img{position: absolute;left:0px;top: 0px;}
+
+    </style>
+
+    <script src="js/getPos.js"></script>
+    <script src="js/getStyle(obj,name).js"></script>
+    <script>
+    window.onload=function()
+    {
+        var s_wrap=document.getElementById("small_wrap")
+        var b_wrap=document.getElementById("big_wrap")
+        var omg1=s_wrap.getElementsByTagName("img")[0]
+        var omg2=b_wrap.getElementsByTagName("img")[0]
+        var f_box=document.getElementById("float_box")
+        var iwrap=document.getElementById("wrap")
+
+       s_wrap.onmouseover=function()
+        {
+            f_box.style.display="block"
+            b_wrap.style.display="block"
+        }
+
+       s_wrap.onmouseout=function()
+        {
+            f_box.style.display="none"
+            b_wrap.style.display="none"
+        }
+
+        s_wrap.onmousemove=function(ev)
+        {
+            var oEvent=ev||event
+            var pos=getPos(oEvent)
+            var mouseX=parseInt(pos.x)
+            var mouseY=parseInt(pos.y)
+            var omg1_left=parseInt(getStyle(s_wrap,"left"))
+            var omg1_top=parseInt(getStyle(s_wrap,"top"))
+            var relativeX=mouseX-omg1_left
+            var relativeY=mouseY-omg1_top
+            var f_width=parseInt(getStyle(f_box,"width"))
+            var f_height=parseInt(getStyle(f_box,"height"))
+            var f_left=relativeX-(f_width/2)
+            var f_top=relativeY-(f_height/2)
+            var s_width=parseInt(getStyle(s_wrap,"width"))
+            var s_height=parseInt(getStyle(s_wrap,"height"))
+            var f_maxwidth=s_width-f_width
+            var f_maxheight=s_height-f_height
+
+            //if判断函数，主要是为了防止f_box跳出s_wrap
+            if(f_left<0)
+            {
+                f_left=0
+            }
+            else if(f_left>f_maxwidth)
+            {
+                f_left=f_maxwidth
+            }
+
+            if(f_top<0)
+            {
+                f_top=0
+            }
+            else if(f_top>f_maxheight)
+            {
+                f_top=f_maxheight
+            }
+
+            //把鼠标的值赋给f_box,是f_box跟随鼠标移动
+            f_box.style.left=f_left+"px"
+            f_box.style.top=f_top+"px"
+
+            //4.5这个值是要算的，比较复杂，具体要根据f_box的大小，b_wrap的大小，omg1的大小，omg2的大小，四者的相关比例，可调节范围的相关比例，大盒子小盒子对比计算得到的。同时要注意，决定omg2位置的不是鼠标位置，而应该是根据一系列鼠标位置计算后得到的f_left的位置决定
+            omg2.style.left=-4.5*f_left+"px"
+            omg2.style.top=-4.5*f_top+"px"
+
+            //代码并不多，主要关键点在于计算，在于这个算法
+        }
+    }
+    </script>
+</head>
+<body>
+    <div id="wrap">
+
+        <div id="small_wrap">
+            <div id="float_box"></div>
+            <img src="img/m_68ab55058a25000000808ff23450.jpg" height="180" width="300" alt="" />
+        </div>
+
+        <div id="big_wrap">
+            <img src="img/m_68ab55058a25000000808ff23450.jpg" height="900" width="1500" alt="" />
+        </div>
+
+        <!--small_wrap big_wrap两个div主要用来定位，取得img的相关位置-->
+
+    </div>
+</body>
+</html>

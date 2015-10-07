@@ -1,0 +1,81 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <title>多个div跟随鼠标移动</title>
+    <style>
+        div{position: absolute;border:4px red solid;border-radius: 50% 50% 50% 50%}
+    </style>
+    <script src="javascript类库/getPos.js"></script>
+    <script src="javascript类库/getStyle(obj,name).js"></script>
+    <script>
+            document.onmousemove=function(ev)
+            {
+                var oDiv=document.getElementsByTagName("div")
+                var oEvent=ev||event
+                var pos=getPos(oEvent)
+                oDiv[0].style.left=pos.x
+                oDiv[0].style.top=pos.y
+                for(var i=oDiv.length-1;i>0;i--)
+                {
+                    oDiv[i].style.left=oDiv[i-1].offsetLeft+"px"
+                    oDiv[i].style.top=oDiv[i-1].offsetTop+"px"
+                }
+
+            }
+    </script>
+
+</head>
+<body>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+</body>
+</html>

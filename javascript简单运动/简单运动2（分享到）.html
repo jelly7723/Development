@@ -1,0 +1,57 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <title>Document</title>
+    <style>
+        #div1{height: 200px;width: 150px;background: red;position: absolute;top: 0;left: -150px;}
+        #span1{height: 60px;width: 20px;background: green;position: absolute;top:70px;right:-20px;}
+    </style>
+    <script>
+    window.onload=function()
+    {
+        var odiv=document.getElementById("div1");
+        var ospan=document.getElementById("span1");
+        var timer=null;
+        var speed=0;
+
+        odiv.onmouseover=function()
+        {
+            move(0);
+        }
+
+        odiv.onmouseout=function()
+        {
+            move(-150);
+        }
+
+        function move(iTarget)
+        {   
+            //首先清除定时器
+            clearInterval(timer);
+            timer=setInterval(function()
+            {   
+                //根据不同iTarget选择不同的速度
+                speed=iTarget==0?10:-10;
+                //判断函数的结束与继续
+                if(odiv.offsetLeft==iTarget)
+                {
+                    clearInterval(timer);
+                }
+                else
+                {
+                    odiv.style.left=odiv.offsetLeft+speed+"px";
+                }
+            },30)
+        }
+    }
+    </script>
+</head>
+<body>
+    <div id="div1">
+        <span id="span1">
+            分享到
+        </span>
+    </div>
+</body>
+</html>

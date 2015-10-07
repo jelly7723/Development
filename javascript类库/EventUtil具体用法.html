@@ -1,0 +1,45 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <title>Document</title>
+    <script>
+    var EventUtil={
+        addHandler:function(obj,type,handler){
+            if(obj.addEventListener){
+                obj.addEventListener(type,handler,false)
+            }
+            else if(obj.attachEvent){
+                obj.attachEvent("on"+type,handler)
+            }
+            else{
+                obj["on"+type]=handler
+            }
+        },
+
+        removeHandler:function(obj,type,handler){
+            if(obj.removeEventListener){
+                obj.removeEventListener(type,handler,false)
+            }
+            else if(obj.detachEvent){
+                obj.detachEvent("on"+type,handler)
+            }
+            else{
+                obj["on"+type]=null
+            }
+        }
+    }
+
+    window.onload=function(){
+        var btn=document.getElementById("btn")
+        function handler(){alert(123)}
+        EventUtil.addHandler(btn,"click",handler)
+    }
+    </script>
+</head>
+<body>
+    <input type="button" id="btn" />
+</body>
+</html>
+
+//可以把那段源码打包，像普通js函数一样导入使用。

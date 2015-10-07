@@ -1,0 +1,57 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <title>函数的递归</title>
+    <script>
+        //函数递归：1
+        function po(num){
+            if(num<=1){
+                return 1;
+            }
+            else{
+                return num*po(num-1)
+            }
+        }
+        alert(po(5))        //120
+        //但是这种写法存在问题，比如说：
+        var lo=po
+        po=null
+        alert(lo(1))        //当参数不是1时会出错，因为当参数不是1会调用递归函数，也即是调用po()函数，但是po()已经设为Null，所以此时出错。
+
+
+        //函数递归：2    改进
+        function so(num){
+            if(num<=1){
+                return 1;
+            }
+            else{
+                return num*arguments.callee(num-1)
+            }
+        }
+        alert(so(5))
+        var mo=so
+        so=null
+        alert(mo(6))
+        //这种写法的好处在于，即使把原函数设为null以后也不会影响到其他函数的调用，因为用了arguments.callee来取代原函数。
+        //但是在严格模式下，脚本访问这个属性会出错，所以就有了第三种方法。
+
+
+        //函数递归：3    最终改进版
+        var  fo=(function f(num){
+            if(num<=1){
+                return 1;
+            }
+            else{
+                return num*f(num-1)
+            }
+        })
+        alert(fo(7))
+        var bo=fo
+        alert(bo(3))
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

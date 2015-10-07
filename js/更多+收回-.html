@@ -1,0 +1,70 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <title>xialamenu</title>
+    <style type="text/css">
+        *{margin: 0;
+            padding: 0;}
+
+        .menu{background-color: #e8e8e8;
+            width: 600px;
+            height: auto;
+            margin:auto;
+            text-align: center;
+            line-height: 30px;
+            }
+
+        .change{display: none;}
+
+        .slice{border-top: 4px solid gray;
+            width: 580px;
+            margin: auto;
+            text-align: center;;
+            line-height: 30px;
+            }
+
+        .ionclk{text-decoration: none;
+        }
+
+    </style>
+        
+
+    
+    <script type="text/javascript">
+         function changeA(){
+          var clk=document.getElementById("onclk");
+          var ichge=document.getElementById("ichange");
+
+
+          if (ichge.style.display!="block") {
+         clk.innerHTML="收回选项-";
+         ichge.style.display="block";
+         }
+         else{
+            clk.innerHTML="更多+";
+         ichge.style.display="none";
+         }
+    }
+
+    </script>
+
+</head>
+<body>
+        <div class="menu">
+                <p>手机 电脑 笔记本</p>
+                <p>耳机 音响 洗衣机 </p>
+                <p>早餐 午餐 晚餐</p>
+
+                <div class="change" id="ichange">
+                        <p>大叔炒粉 艾维克</p>
+                        <p>潮汕风味 原味汤粉王</p>
+                        <p>麻辣烫 肠粉</p>
+                </div>
+        </div>
+
+        <div class="slice">
+            <p><a href="#"  class="ionclk" id="onclk" onclick="changeA()">更多+</a></p>
+        </div>
+</body>
+</html>

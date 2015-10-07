@@ -1,0 +1,40 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <title>Document</title>
+    <style>
+        #div{margin: 20px;width: 200px;height:200px;border:solid;}
+    </style>
+    <script>
+        window.onload=function(){
+            var txt=document.getElementById("txt")
+            var btn=document.getElementById("btn")
+            var div=document.getElementsByTagName("div")[0]
+
+            btn.onclick=function(){
+                write()
+            }
+
+            txt.onkeydown=function(ev){
+                var oEvent=ev||event
+                if(oEvent.keyCode==13){
+                    write()
+                }
+            }
+        }
+
+        function write(){
+            var li=document.createElement("div")
+            li.innerHTML=txt.value
+            txt.value=" "
+            div.insertBefore(li,div.firstChild)
+        }
+    </script>
+</head>
+<body>
+    <input type="text" id="txt" />
+    <input type="button" id="btn"value="发布" />
+    <div id="div"></div>
+</body>
+</html>

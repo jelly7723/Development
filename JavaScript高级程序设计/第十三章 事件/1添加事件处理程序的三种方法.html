@@ -1,0 +1,49 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <title>添加事件的三种方式</title>
+    <script>
+        window.onload=function()
+        {
+            //第一种方式。HTML事件处理程序，直接在HTML文档中添加事件。
+            //即，<input type="button" onclick="alert(646)" />
+            //缺点：js代码与HTML文档的耦合性较强，修改起来很麻烦，既要修改js又要修改HTML，一般不使用。
+
+            //第二种方式。DOM0级事件处理程序，平时最常用的方式。
+            function show()
+            {
+                alert(6465)
+            }
+            var btn=document.getElementsByTagName("input")
+            var btn2=btn[1]
+            btn2.onclick=function()
+            {
+                alert(6666)
+            }
+            //这是我们最常用的添加事件的方法，没有耦合性，修改也方便。
+            btn2.onclick=null;
+            //注意，DOM0级添加的事件通过设置null来删除事件。
+            
+            //第三种方式。DOM2级事件处理程序
+            var btn3=btn[2]
+            btn3.addEventListener("click",show,false)
+            //DOM2级事件处理程序，该方法的使用方式和jq的bind方法十分相似。另要注意的地方是，"click"，事件的on要去掉，并且，中间的参数是写函数，函数记得不要加引号，只有第一个事件类型才要加引号，并且要注意最后一个参数true和false，false表示事件按冒泡流的方式执行，true表示事件按捕获流执行，一般我们都把参数设置为false。
+            btn3.removeEventListener("click",show,false)
+            //DOM2级事件通过removEventListener来删除事件。同时注意，添加的事件函数是没有括号的。
+            //DOM2级事件优点：可以给同一个元素添加多个事件，不止是一个函数事件，可以是多个，不会覆盖，会依次执行。
+            //缺点：addEventListener不兼容IE。同时，注意，使用addEventListener()添加的事件只能通过removeEventListener()来删除，并且两者的参数必须一致，简单来说，如果将来要删除这个事件，那么这个事件调用的函数必须不能为匿名函数，像上面的写法是对的，模仿就行。
+            
+            //IE下使用的是attachEvent()和detachEvent()这两个方法，接受两个参数，分别是事件类型和事件函数，没有了false和true(IE8以下只支持事件冒泡)。
+            btn3.attachEvent("onclick", show)
+            //注意，关于attachEvent()方法，""事件要加on，别问我为什么，我也不知道。。记住就好。只有DOM2级的addEventListener不需要加on。另外，attachEvebt()也可以添加多个事件，但是不同的是，执行事件的顺序是相反的，也即是写在最后的事件先执行，然后才到最先写的事件。
+            btn3.detachEvent("onclick",show)
+        }
+    </script>
+</head>
+<body>
+    <input type="button" onclick="alert(646)" />
+    <input type="button" />
+    <input type="button" />
+</body>
+</html>

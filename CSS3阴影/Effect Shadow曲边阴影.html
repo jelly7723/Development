@@ -1,0 +1,56 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <title>Effect</title>
+    <style>
+
+        /*应该给父元素.wap设置背景色，从而覆盖子阴影的某些样式。*/
+        .wrap{width:1000px;height: 300px;margin:200px auto;background-color: white}
+
+        h1{text-align: center;font-size: 50px;line-height: 300px;}
+
+        /*.effect的第一行样式要注意，此处使用了两个知识点，第一个是boxshadow设置完了一次样式后，用逗号分隔开设置第二轮样式，这实际上就是使用了box-shadow的多层级样式，先书写的样式先渲染（指的是如果发生覆盖的情况。），但是这里又恰巧用到了第二个知识点，第二轮的设置添加了值"inset"，从而使得第二轮阴影是内阴影，所以不会覆盖，也即是设置了内外两层阴影。*/
+
+        /*结合使用黑色和透明度，可以做出更逼真的阴影*/
+
+        /*这个样式主要设置四条边的内外阴影。*/
+        .effect{position: relative;
+                   -webkit-box-shadow:0 1px 4px rgba(0,0,0,0.3),0 0 40px rgba(0,0,0,0.1) inset;
+                   -moz-box-shadow:0 1px 4px rgba(0,0,0,0.3),0 0 40px rgba(0,0,0,0.1) inset;
+                   -o-box-shadow:0 1px 4px rgba(0,0,0,0.3),0 0 40px rgba(0,0,0,0.1) inset;
+                   -ms-box-shadow:0 1px 4px rgba(0,0,0,0.3),0 0 40px rgba(0,0,0,0.1) inset;
+                   box-shadow:0 1px 4px rgba(0,0,0,0.3),0 0 40px rgba(0,0,0,0.1) inset;}
+
+
+        /*注意content:""是一定要设置的属性，不可以漏掉。*/
+        /*after标签的作用是在effect的最后一个子元素后面加上after元素。*/
+        /*这条样式主要用来设置最底下那条边的特殊阴影。*/
+        .effect::after{content: "";
+                            z-index: -1;
+                            position: absolute;
+                            top:50%;
+                            bottom: 0;
+                            left: 30px;
+                            right: 30px;
+                            border-radius: 100px/20px;
+                            -webkit-box-shadow: 0 0 60px rgba(0,0,0,0.5);
+                            -moz-box-shadow: 0 0 60px rgba(0,0,0,0.5);
+                            -ms-box-shadow: 0 0 60px rgba(0,0,0,0.5);
+                            -o-box-shadow: 0 0 60px rgba(0,0,0,0.5);
+                            box-shadow: 0 0 60px rgba(0,0,0,0.5);}
+
+
+
+/*==正文内容。关于这个曲线阴影，可以直接复制粘贴拿去使用，但是某些参数的值需要修改。==*/
+/*==1、使用阴影的地方，父元素必须设置背景色，或者是父元素设置背景图片，否则无法覆盖遮挡住after样式的上边阴影，左边和右边阴影。==*/
+/*==2、其实主要需要修改的值是after中radius的值，以及box-shadow的值。两者不同的组合会形成不同的阴影效果。==*/
+/*==复制的时候，除了h1标签，其他元素都可以直接照搬，wrap的宽和高适当修改。==*/
+    </style>
+</head>
+<body>
+    <div class="wrap effect">
+        <h1>Shadow Effect</h1>
+    </div>
+</body>
+</html>

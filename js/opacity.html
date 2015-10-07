@@ -1,0 +1,59 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <title>opacity</title>
+    <style type="text/css">
+        *{margin: 0;
+            padding: 0;}
+
+        .one{
+            height: 200px;
+            width: 200px;
+            background-color: red;
+            opacity: 0.3;
+        }
+
+    </style>
+    
+    <script type="text/javascript">
+            window.onload=function () {
+                var click=document.getElementById("two");
+                click.onmouseover=function(){
+                    starchange(1.0);
+                }
+                click.onmouseout=function(){
+                    starchange(0.3);
+                }
+            }
+
+            var timer=null;
+            var alpha=0.3
+            function starchange(iTarget)
+            {
+                clearInterval(timer);
+                var click=document.getElementById("two");
+
+                timer=setInterval(function(){  
+                    var speed=0;
+                    if (iTarget>alpha) {
+                        speed=0.1
+                    }
+                    else{speed=-0.1}
+
+                if (iTarget==alpha) 
+                    {
+                        clearInterval(timer);
+                    }
+                else{
+                        alpha=alpha+speed;
+                        click.style.opacity=alpha;
+                        }
+            },30)
+}
+
+</head>
+<body>
+    <div class="one" id="two"></div>
+</body>
+</html>

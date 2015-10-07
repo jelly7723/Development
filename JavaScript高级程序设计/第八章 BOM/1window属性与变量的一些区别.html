@@ -1,0 +1,29 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <title>window属性与变量的一些区别</title>
+    <script>
+    //虽然全局变量最终会成为window对象的属性，但是定义全局变量和在window上直接定义属性还是存在一定的区别。
+    
+    //1、全局变量不能通过delete操作符进行删除，但是window对象上定义的属性可以。
+    var app="pap"
+    window.acc="aaa"
+    alert(app)
+    alert(acc)
+    delete app
+    alert(app)      //输出pap，因为delete删除对全局变量无效。
+    delete window.acc       
+    alert(window.acc)       //输出undefined，因为delete已经把window对象的属性删除了。
+
+    //2、尝试访问未声明的变量会出错，但是如果是未定义window的属性则不会。
+    var newValue=oldValue    //抛出错误，因为不存在oldValue，未声明的变量。
+    var newValue2=window.oldValue2      //不会出错，因为这是一次查询，查询window对象。
+
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

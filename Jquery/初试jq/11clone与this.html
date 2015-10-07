@@ -1,0 +1,28 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <title>clone与this</title>
+    <script src="../jquery-2.1.4.js"></script>
+    <script>
+        $(function()
+        {
+            $("ul li").click(function()
+            {
+                $(this).clone(true).appendTo("ul")
+            })
+        })
+
+        //clone含有参数true和false，当参数为true时默认含有被克隆事件的相关功能
+    </script>
+</head>
+<body>
+    <ul>
+        <li>你妈炸了</li>
+        <li>尼玛</li>
+        <li>我妈没炸</li>
+        <li>我是说你妈把鸡腿拿去炸了</li>
+        <li>(⊙o⊙)哦。。。</li>
+    </ul>
+</body>
+</html>

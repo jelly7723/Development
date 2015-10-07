@@ -1,0 +1,29 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <title>js插入子节点</title>
+    <script>
+    window.onload=function()
+    {
+        var oBtn=document.getElementById("btn")
+        var val=parseInt(document.getElementById("txt").value)
+        var odiv=document.getElementById("div1")
+        oBtn.onclick=function()
+        {   alert(65)
+            for(var i=0;i<val;i++)
+            {
+                var newe=document.createElement("input")
+                newe.setAttribute("type","text")
+                odiv.appendChild(newe)
+            }
+        }
+    }
+    </script>
+</head>
+<body>
+    <input type="text"  id="txt" />
+    <input type="button" id="btn" />
+    <div id="div1">135</div>
+</body>
+</html>

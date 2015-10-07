@@ -1,0 +1,35 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <title>attr()与removeAttr()</title>
+    <script src="../jquery-2.1.4.js"></script>
+    <script>
+    $(function()
+    {
+        $("input:first").click(function()
+        {
+            $("p[title=123]").attr({"title":"555","aaa":"bbb"})
+        })
+
+        $("input:odd").click(function()
+        {
+            alert($("p:eq(0)").attr("title"))
+        })
+
+        $("input:last").click(function()
+        {
+            $("p:eq(0)").removeAttr("title")
+        })
+    })
+    </script>
+</head>
+<body>
+    <p title="123">45687</p>
+    <p title="54">465</p>
+    <p>6468</p>
+    <input type="button" />
+    <input type="button" />
+    <input type="button" />
+</body>
+</html>

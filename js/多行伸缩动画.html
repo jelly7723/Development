@@ -1,0 +1,63 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <title>mutiply</title>
+    <style type="text/css">
+          *{margin: 0;
+            padding: 0;}
+
+            div{width: 200px;
+                height: 100px;
+                background-color: red;
+                margin-bottom: 30px;}
+
+    </style>
+    
+    <script type="text/javascript">
+    onload=function(){
+            var Odiv=document.getElementsByTagName("div");
+            for(i=0;i<Odiv.length;i++)
+            {   
+                
+                Odiv[i].onmouseover=function()
+                {
+                        starmove(this,400)
+                };
+                Odiv[i].onmouseout=function()
+                {
+                        starmove(this,200)
+                };
+            }
+    }
+
+
+    function starmove(obj,itarget)
+    {
+        clearInterval(obj.timer);
+        obj.timer=setInterval(function(){
+        var speed=(itarget-obj.offsetWidth)/10;
+        speed=speed>0?Math.ceil(speed):Math.floor(speed);
+        if(obj.offsetWidth==itarget)
+        {
+            clearInterval(obj.timer);
+        }
+        else
+        {
+           
+                obj.style.width=obj.offsetWidth+speed+'px';
+         }
+        } , 30)
+    }
+    
+
+
+    </script>
+    </head>
+
+<body>
+    <div class="div1" id="idiv1"></div>
+    <div class="div2" id="idiv2"></div>
+    <div class="div3" id="idiv3"></div>
+</body>
+</html>

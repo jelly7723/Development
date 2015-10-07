@@ -1,0 +1,29 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <title>创建Object的方法</title>
+    <script>
+        //第一种方法，new操作符后面跟构造函数。
+        var obj=new Object()
+        obj.name="Jack"
+        obj.age=29
+        alert(obj.name)
+
+        //第二种也是最常用方法，对象字面量创建。注意分隔开要用逗号，同时中间的是分号也要看清楚，符号容易出错。
+        var obj2={
+            name:"Mke",
+            age:28
+        }
+        alert(obj2.name)
+
+        //还有一种方式。
+        var obj3={}
+        obj3.name="MMM"
+        obj3.age=27
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

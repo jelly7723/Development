@@ -1,0 +1,26 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <title>Document</title>
+    <script>
+        function strict(type,args){
+            if(type.length!=args.length){
+                alert("传入的数据有误，参数与类型不相等。")
+            }
+            else{
+                for(var i=0;i<type.length;i++){
+                    if(typeof args[i]!=type[i]){
+                        alert(i+"类型不相等！")
+                    }
+                }
+            }
+        }
+
+        strict(["number"],[2])
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

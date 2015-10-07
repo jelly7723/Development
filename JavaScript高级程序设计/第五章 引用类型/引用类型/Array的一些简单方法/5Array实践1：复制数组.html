@@ -1,0 +1,53 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <title>Array实践1:复制数组</title>
+    <script>
+    var arr=["red","blue","purple","gray"]
+
+    //方法一：concat()不传参数。
+    var arr1=arr.concat()
+    alert(arr1)
+
+    //方法二：shift()
+    var arr2=[]
+    var len=arr.length
+    for(var i=0;i<len;i++)
+    {
+        arr2[i]=arr.shift()
+    }
+    alert(arr2)
+    alert(arr)
+    //方法二的注意事项，shift()方法会影响原数组，从而改变了原数组，把原数组变成了空数组，令，len必须写在外面。
+    
+    //方法三：slice()
+    var arr3=[]
+    for(var i=0;i<arr2.length;i++)
+    {
+        arr3[i]=arr2.slice(i,i+1)
+    }
+    alert(arr3)
+
+    //方法四：slice()方法变
+    var arr4=[]
+    arr4=arr3.slice(0)
+    alert(arr4)
+
+    //方法五：pop()与unshift(
+    //另外，注意，unshift()与push()方法同类，都有u，可以用这个记忆。
+    var arr5=[]
+    var item=[]
+    var len2=arr4.length
+    for(var i=0;i<len2;i++)
+    {
+        item[i]=arr4.pop()
+        arr5.unshift(item[i])
+    }
+    alert(arr5)
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

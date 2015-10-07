@@ -1,0 +1,41 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <title>Document</title>
+    <style>
+        *ul{padding: 0;margin:0;}
+        *li{padding: 0;margin: 0}
+
+        li{height: 100px;height: 100px;background: red}
+    </style>
+
+    <script>
+    window.onload=function(){
+        var oUl=document.getElementsByTagName("ul")[0]
+
+        //IE6-8不兼容firstElementChild
+        //oUl.firstElementChild.style.background="black"
+
+        if(oUl.firstElementChild){
+            oUl.firstElementChild.style.background="black"
+        }
+        else{
+            //IE6-8下，firstChild是指第一个子元素。
+            oUl.firstChild.style.background="black"
+        }
+    }
+    </script>
+</head>
+<body>
+    <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+        <li>6</li>
+
+    </ul>
+</body>
+</html>

@@ -1,0 +1,19 @@
+#box_wrap{width:600px;height:400px;position:relative;margin:200px auto;overflow: hidden;}
+
+#img_wrap{width:4200px;height: 400px;position: absolute;left:-600px;}
+
+#img_wrap img{float:left;}
+
+.row{position:absolute;top:50%;margin-top: -20px;width:40px;height:40px;color:white;background-color:black;opacity: 0.5;filter:alpha(opacity:70);font-size: 30px;text-align: center;line-height: 40px;display:none;border:0;}
+
+#leftrow{left:30px;}
+
+#rightrow{right:30px;}
+
+#btn_wrap{position: absolute;left: 50%;margin-left:-75px;bottom: 20px;width:150px;height: 20px;list-style: none;line-height: 20px;text-align: center;font-size: 18px;}
+
+#btn_wrap li{width: 8px;height: 8px;border-radius: 50%;border:1px solid white;background-color: black;margin:auto 10px;float:left;}
+
+#btn_wrap .on{background-color: orange}
+
+

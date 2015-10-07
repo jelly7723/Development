@@ -1,0 +1,73 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <title>random()随机函数</title>
+    <style>
+        h1{color: red;text-align: center;margin-top: 50px;}
+        div{width: 400px;height: 100px;margin:30px auto;text-align: center;}
+        div span{border: 1px solid black; font-size: 30px;background-color: yellow;border-radius: 20%;padding: 5px;margin:20px;cursor: pointer;}
+    </style>   
+    <script>
+    window.onload=function()
+    {
+        var h1=document.getElementsByTagName("h1")[0]
+        var div=document.getElementsByTagName("div")[0]
+        var play=document.getElementsByTagName("span")[0]
+        var stop=document.getElementsByTagName("span")[1]
+
+        var ary=["iphone6","空调","洗衣机","冰箱","烤炉","风扇","谢谢惠顾","再来三次"]
+        var timer=null
+        var flag=0
+
+        function funcPlay()
+        {
+            clearInterval(timer)
+            timer=setInterval(function()
+                {   
+                    var ran=Math.floor(Math.random()*8)
+                    h1.innerHTML=ary[ran]
+
+                },30)
+            play.style.backgroundColor="#ccc"
+            stop.style.backgroundColor="yellow"
+            flag=1
+        }
+
+        function funcStop()
+        {
+            clearInterval(timer)
+            flag=0
+            play.style.backgroundColor="yellow"
+            stop.style.backgroundColor="#ccc"
+        }
+
+        play.onclick=funcPlay
+        stop.onclick=funcStop
+
+        document.onkeydown=function(ev)
+        {
+            var oEvent=ev||event
+            if (oEvent.keyCode==13) 
+            {
+                if(flag==0)
+                {
+                    funcPlay()
+                }
+                else
+                {
+                    funcStop()
+                }
+            }
+        }
+    }
+    </script>
+</head>
+<body>
+    <h1>请开始抽奖</h1>
+    <div>
+        <span>开始</span>
+        <span style="background-color:#ccc">停止</span>
+    </div>
+</body>
+</html>

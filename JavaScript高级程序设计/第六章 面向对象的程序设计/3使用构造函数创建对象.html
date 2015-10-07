@@ -1,0 +1,35 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <title>构造函数创建对象</title>
+    <script>
+        //第一步，封装构造函数。
+        function Person(name,age)
+        {
+            this.name=name
+            this.age=age
+            this.sayName=function(){
+                alert(this.name)
+            }
+        }
+
+        //第二步，调用该函数创建对象，注意new操作符的作用。
+        var person=new Person("Jack",28)
+        person.sayName()
+
+        var person2=new Person("John",23)
+        person2.sayName()
+        
+        //以上就是构造函数模式创建对象。
+        //以下就是构造函数模式存在的问题
+        
+        alert(person.sayName==person2.sayName)      //最终输出false
+
+        /*构造函数存在的问题：同一个方法(sayName)，在不同的实例上(person与person2)，都要重新创建一次，也就是说，不同的实例上相同的方法实际上是不同的，即是person.sayName与person2.sayName是不相等的。为了解决这个问题，就要使用到原型模式。*/
+
+    </script>
+</head>
+<body>
+</body>
+</html>

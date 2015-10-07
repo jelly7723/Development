@@ -1,0 +1,21 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <title>回顾css1和css2的border</title>
+    <style>
+        /*==关于合并border属性写法的一些小细节==*/
+        body{border:1px solid red;}      /*正常写法*/
+        p{border:1px red;}                     /*由于缺少关键属性border-style，所以系统默认解析为none，即border无style，所以就无法显示border*/
+        div{border:solid;}                       /*但是这样写又是有效，浏览器会调用solid的默认样式，默认颜色，默认大小。说明border-style才是最重要，平时测试的时候可以直接设这个值就好了。*/
+
+        /*==当需要为四条边分别设置不同的样式的时候，可以分开写三个样式，其中三个都遵守TRBL原则(Top,Right,Bottom,Left)==*/
+        li{border:solid red 1px;
+           border-width:1px 0px;}
+        /*这行样式的作用是，li元素上下有边框，左右没有边框，两句代码十分优化，自己琢磨掌握。*/
+    </style>
+</head>
+<body>
+    
+</body>
+</html>

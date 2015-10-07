@@ -1,0 +1,16 @@
+import java.util.*;
+
+class Dog{
+	public String eat(String food){
+		System.out.println("kongkong want to eat "+food);
+		return food;
+	}
+}
+
+public class Retu {
+	public static void main(String[] args){
+		Dog kongkong=new Dog();
+		String fo=kongkong.eat("meat");
+		System.out.println(fo);
+	}
+}

@@ -1,0 +1,27 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <title>节点之间的关系</title>
+    <script>
+    window.onload=function(){
+        var par=document.getElementById("par")
+        alert(par.childNodes.length)        //ie6上输出的是6。但是其它现代浏览器不是，因为其它浏览器会把空节点也读取进去。
+        alert(par.firstChild==par.childNodes[0])       //true，说明选择第一个子元素的这两种方法相同
+        alert(par.lastChild==par.childNodes[par.childNodes.length-1])       //true。
+        alert(par.firstChild.nextSibling==par.childNodes[1])
+        alert(par.lastChild.previousSibling==par.childNodes[4])
+    }
+    </script>
+</head>
+<body>
+    <div id="par">
+        <div id="fi">11</div>
+        <div id="se"></div>
+        <div id="third"></div>
+        <div id="for"></div>
+        <div id="fiv"></div>
+        <div id="six"></div>
+    </div>
+</body>
+</html>

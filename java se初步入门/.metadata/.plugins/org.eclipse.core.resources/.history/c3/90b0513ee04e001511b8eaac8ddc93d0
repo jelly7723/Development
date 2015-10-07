@@ -1,0 +1,18 @@
+import java.util.*;
+
+public class Students {
+	public static void main(String[] args){
+		Scanner in=new Scanner(System.in);
+		System.out.println("请输入学生的人数：");
+		int stuNum=in.nextInt();//stuNum存储学生人数
+		System.out.println("请输入科目的总数：");
+		int courNum=in.nextInt();//courNum存储科目总数
+		String name[]=new String(stuNum); 
+		
+		for(int i=0;i<stuNum;i++){
+			System.out.println("请输入第"+(i+1)+"学生的姓名：");
+			name[i]=in.next();
+			
+		}
+	}
+}

@@ -1,0 +1,41 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <title>Document</title>
+    <script>
+
+        var xmlHttp
+
+
+        function createXMLRequest(){
+            if(window.ActiveXObject){
+                xmlHttp=new ActiveXObject("Microsoft.XMLHTTP")
+            }
+            else if(window.XMLHttpRequest){
+                xmlHttp=new XMLHttpRequest()
+            }
+        }
+
+        function startRequest(){
+            createXMLRequest()
+            xmlHttp.onreadystatechange=handleStateChange
+            xmlHttp.open("GET","111.xml",true)
+            xmlHttp.send(null);
+        }
+
+        function handleStateChange(){
+            if(xmlHttp.redadyState==4){
+                if(xmlHttp.status==200){
+                    document.getElementById("results").innerHTML=xmlHttp.responseText
+                }
+            }
+        }
+
+    </script>
+</head>
+<body>
+    <form action="#"><input type="text" id="email" name="email" onclick="startRequest()" /></form>
+    <div id="results"></div>
+</body>
+</html>

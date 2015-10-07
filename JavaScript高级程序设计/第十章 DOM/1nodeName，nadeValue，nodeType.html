@@ -1,0 +1,19 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <title>nodeName，nadeValue，nodeType</title>
+    <script>
+    window.onload=function(){
+        var nod=document.getElementById("ll")
+        alert(nod.nodeType)         //输出1，说明nodeType是element，即是一个元素。
+        alert(nod.nodeName)        //输出div，说明这个元素的标签是div。
+        alert(nod.nodeValue)        //输出null，暂时不知道为什么。
+    }
+    </script>
+</head>
+<body>
+    <div id="ll">
+    </div>
+</body>
+</html>

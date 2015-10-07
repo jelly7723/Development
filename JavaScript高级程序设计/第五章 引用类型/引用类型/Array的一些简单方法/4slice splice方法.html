@@ -1,0 +1,43 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <title>slice splice方法</title>
+    <script>
+    var colors=["blue","red","black","yellow","gray","purple"]
+    var item1=colors.slice(2)
+    alert(item1)      //black,yellow,gray,purple
+    //slice方法并不影响原数组
+    //item1接收的是slice的元素。
+    //2代表从2 "black" 开始，记得考虑还有0,1,2
+    
+    alert(colors.slice(1,4))        //red,black,yellow    
+    //4代表在4的位置"gray"截止，记得不包括4本身
+    
+    var item=colors.splice(0,2)
+    alert(item)     //blue,red
+    alert(colors)        //black,yellow,gray,purple
+    //splice(0,2)表示在0的位置，删除两项，其中item承接删除的两个项，并且该方法会直接影响到colors，从而导致原数组发生了改变，功能类似删除
+    
+    item=colors.splice(1,0,"green,pink")
+    alert(item)     //不是green,pink ，而应该是一个空数组，因为删除的项数是0
+    alert(colors)       //black,green,pink,gray,purple
+    //splice(1,0,"green","pink")表示在1的位置删除0项，然后再插入相关的项数，功能类似于插入
+    
+    item=colors.splice(1,1,"white")
+    alert(item)     //green
+    alert(colors)       //black,white,pink.gray,purple
+    //splice(1,1,"white")表示在1的位置删除一项，然后插入新的项，功能相当于替换
+
+    //综上，整理splice()方法的说明。
+    //splice(value1,value2,value3)
+    //其中,value1表示在该位置开始，value2表示在1的位置删除value2项，value3表示在1位置删除了2的项之后，再加上3的项
+    //注意，value1可以为0，表示从首项开始，value2也可以为0，表示不删除项，value3可以是多个字符串，表示增加多个项。
+    //1 2 3者的不同搭配分别可以构成不同的功能，分别是删除，插入，替换
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

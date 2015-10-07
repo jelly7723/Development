@@ -1,0 +1,25 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <title>关于基本包装类型和引用类型的区分</title>
+    <script>
+    var str="strtt"
+    alert(typeof str)
+    str.color="red"
+    alert(str.color)
+
+
+    var o_str=new String("ssss")
+    alert(typeof o_str)
+    o_str.color="red"
+    alert(o_str.color)
+
+    //区分好new String()创建字符串是不一样的，String相当于一个引用类型，即是和Array Object是一样的，有自己的方法。
+    //基本包装类型也不需要理解的太过深入，一般我们都不会给基本包装类型添加属性和方法，正常来说我们只需要知道并且会使用基本包装类型的默认方法就可以了，其中重点是掌握字符串的方法，综上，对于基本包装类型，我们需要学的就是怎么操作字符串。基本包装类型其实就只是给字符串增加了一些默认方法，使得我们可以操作字符串，比如str.length，这就是基本包装类型赋予的方法。
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <title>border-radius</title>
+    <style>
+    /*==css3的border-radius属性可以拆开写，像css2的border属性一样，依次分为左上角右上角等等，但是，一般都不推荐分开写的这种方法==*/
+    /*==因为由于各浏览器暂时还没有统一分开的写法，所以不同浏览器上分开写的方式不同，因此还是建议用合并的写法。==*/
+    /*==合并写法已经被各大浏览器厂商统一，并且合并写法能完成分开写法的功能。所以对于radius没有必要分开写==*/
+
+
+    /*==另外要注意，radius与border属性没有必然关系，并不是说有radius就要设置border的宽度。==*/
+        
+
+
+        div{width: 300px;height: 300px;margin: 100px;line-height: 300px;font-size: 28px;background-color: orange;text-align: center;float: left;}
+        div:nth-of-type(1){border-radius: 50px;}
+        div:nth-of-type(2){border-radius: 50px 10px 200px 40px;}
+        div:nth-of-type(3){border-radius: 50px 10px 200px 40px/20px 20px 30px 50px;}
+        /*==看清楚第三种写法，很神奇。/反斜杠左边设置的是圆角的水平半径。右边的是圆角的竖直半径。不同组合构成各种复杂的圆角边框。==*/
+
+        div:nth-of-type(4){border-radius: 50px 0 0 0}
+        /*==如果想制作当个圆角边框时，可以使用这种方法==*/
+        
+
+        div:nth-of-type(5){border-radius: 50px;border:60px solid black;}
+        /*==这行样式说明radius和border是两个互不相干的属性。==*/
+
+        /*==使用radius制作椭圆，这是个不错的技巧。==*/
+        div:nth-of-type(6){height: 300px;width: 150px;border-radius: 150px/300px}
+    </style>
+</head>
+<body>
+    <div>111</div>
+    <div>222</div>
+    <div>333</div>
+    <div>444</div>
+    <div>555</div>
+    <div>666</div>
+</body>
+</html>

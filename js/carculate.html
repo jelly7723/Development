@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <title> 事件</title>  
+  <script type="text/javascript">
+  <script src="/javascripts/application.js" type="text/javascript" charset="utf-8" async defer></script>
+   function count(){
+    var tx1=document.getElementById("txt1").value;
+    var chart=document.getElementById("select").value;
+    var tx2=document.getElementById("txt2").value;
+
+    var result="";
+    
+  
+    switch(chart)
+    {case "+":
+        result=parseFloat(tx1)+parseFloat(tx2);
+        break;
+    case "-":
+        result=parseFloat(tx1)-parseFloat(tx2);
+        break;
+    case "*":
+        result=parseFloat(tx1)*parseFloat(tx2);
+        break;
+    default:
+        result=parseFloat(tx1)/parseFloat(tx2);
+        break;
+    }
+   document.getElementById("fruit").value=result;
+   }
+  </script> 
+ </head> 
+ <body>
+   <input type="text" id="txt1" /> 
+   <select id="select">
+    <option value="+">+</option>
+    <option value="-">-</option>
+    <option value="*">*</option>
+    <option value="/">/</option>
+   </select>
+   <input type="text" id="txt2" /> 
+   <input type="button" value="="  onclick="count()"/> 
+   <input type="text" id="fruit" />   
+ </body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <title>Document</title>
+    <style>
+        div{width: 100px;height: 100px;background-color: yellow;margin: 100px;float: left;opacity: 0.3;filter:alpha(opacity:30);}
+    </style>
+    <script src="getStyle(obj,name).js"></script>
+    <script>
+        window.onload=function(){
+            var aDiv=document.getElementsByTagName("div")
+            for(var i=0;i<aDiv.length;i++){
+                aDiv[i].timer=null
+            }
+
+            aDiv[0].onmouseover=function(){
+                animation(this,"opacity",100,function(){
+                    animation(aDiv[0],"height",400,function(){
+                        animation(aDiv[0],"width",400)
+                    })
+                })
+            }
+            aDiv[0].onmouseout=function(){
+                animation(this,"opacity",30)
+            }
+        }
+
+        function animation(obj,attr,target,fn){
+            clearInterval(obj.timer)
+            obj.timer=setInterval(function(){
+                if(attr=="opacity"){
+                    var cur=Math.round(parseFloat(getStyle(obj,attr))*100)
+                }
+                else{
+                    var cur=parseInt(getStyle(obj,attr))
+                }
+
+                var speed=(target-cur)/8
+                speed=speed>0?Math.ceil(speed):Math.floor(speed)
+
+                if(cur==target){
+                    clearInterval(obj.timer)
+                    if(fn){
+                        fn()
+                    }
+                }
+                else{
+                    cur+=speed
+                    if(attr=="opacity"){
+                        obj.style.opacity=cur/100
+                        obj.style.filter="alpha(opacity:'+cur+')"
+                    }
+                    else{
+                    obj.style[attr]=cur+"px"
+                    }
+                }
+            },30)
+        }
+    </script>
+</head>
+<body>
+    <div>变宽</div>
+    <div>变高</div>
+</body>
+</html>

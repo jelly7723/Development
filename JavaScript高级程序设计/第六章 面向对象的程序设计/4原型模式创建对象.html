@@ -1,0 +1,55 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <title>原型模式创建对象</title>
+    <script>
+        function Person(){}
+        Person.prototype.name="Nick"
+        Person.prototype.age=28
+        Person.prototype.sayName=function(){
+            alert(this.name)
+        }
+
+        var person1=new Person()
+        var person2=new Person()
+
+        person1.sayName()
+        person2.sayName()
+
+        //每当代码读取某个对象的某个属性时，都会执行一次搜索，搜索首先从对象实例本身开始，如果在实例中没有找到相关属性，则继续搜索指针指向的原型对象，一直向上寻找。
+        
+        person1.name="JJJ"
+        person1.sayName()
+        person2.sayName()
+        //当给实例添加属性时，如果该属性原型中也有，那么该实例属性会屏蔽原型中的属性。其实就是，给person1中的name设置一个值，然后在相关调用的时候，js引擎查找person1的name发现存在value，那么就不再遍历原型中相应的name的值。
+        //上面的内容最想说的可能是当给实例一个属性时，实例的这个属性不会改变原型中的属性值，只是把原型屏蔽了，如果删除相应值的话，原型的值又会重新被调用。
+        
+        delete person1.name
+        person1.sayName()
+
+        //通过hasOwnProperty()方法，可以知道访问的这个属性是来自于实例中还是来自于原型中。
+        //如果属性来自实例中，会返回一个布尔值true，如果属性存在于原型中或者是根本没有该属性，则返回flase。
+        
+        person1.name="Mkk"
+        person2.job="student"
+        alert(person1.hasOwnProperty("name"))       //true
+        alert(person2.hasOwnProperty("job"))            //true
+        alert(person2.hasOwnProperty("age"))           //false
+        alert(person1.hasOwnProperty("job"))            //false
+
+        //关于in操作符
+        //无论属性是在实例中还是在对象中，只要该属性存在，使用in操作符就会返回true值，所以结合使用hasOwnproperty()和in就可以判断属性在哪里
+        var person3=new Person()
+        var person4=new Person()
+        alert("name" in person3)    //true
+        alert("job" in person3)     //false
+        person3.job="stu"
+        alert("job" in person3)     //true
+        //只要对象存在这个属性，就会返回true
+
+    </script>
+</head>
+<body>
+</body>
+</html>

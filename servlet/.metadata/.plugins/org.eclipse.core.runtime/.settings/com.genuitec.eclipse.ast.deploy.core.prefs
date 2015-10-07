@@ -1,0 +1,24 @@
+#Tue Sep 01 19:57:30 CST 2015
+tomcat7Server.FirstServlet.shouldOverwrite=false
+tomcat7Server.FirstServlet.isExploded=true
+myeclipseTomcatServer.FirstServlet.IEARProjectName=
+tomcat7Server.FirstServlet.shouldBackup=false
+myeclipseTomcatServer.FirstServlet.isExploded=true
+tomcat7Server.FirstServlet.altContextRoot=
+eclipse.preferences.version=1
+tomcat7Server.FirstServlet.type=WebDeployment
+myeclipseTomcatServer.FirstServlet.shouldBackup=false
+myeclipseTomcatServer.FirstServlet.deployIsOverProject=false
+myeclipseTomcatServer.FirstServlet.type=WebDeployment
+myeclipseTomcatServer.FirstServlet.deploymentPath=C\:\\Users\\Administrator\\Desktop\\servlet\\.metadata\\.me_tcat\\webapps\\FirstServlet
+tomcat7Server.FirstServlet.IEARProjectName=
+myeclipseTomcatServer.FirstServlet.isDeployed=true
+tomcat7Server.FirstServlet.contextRoot=/FirstServlet
+myeclipseTomcatServer.FirstServlet.isUptoDate=true
+tomcat7Server.FirstServlet.deploymentPath=C\:\\apache-tomcat-8.0.24\\webapps\\FirstServlet
+tomcat7Server.FirstServlet.isDeployed=true
+tomcat7Server.FirstServlet.deployIsOverProject=false
+tomcat7Server.FirstServlet.isUptoDate=true
+myeclipseTomcatServer.FirstServlet.contextRoot=/FirstServlet
+myeclipseTomcatServer.FirstServlet.altContextRoot=/FirstServlet
+myeclipseTomcatServer.FirstServlet.shouldOverwrite=false

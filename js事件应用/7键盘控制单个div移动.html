@@ -1,0 +1,37 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <title>键盘控制div移动</title>
+    <script src="javascript类库/getStyle(obj,name).js"></script>
+    <script>
+        document.onkeydown=function(ev)
+        {
+            var oEvent=ev||event
+            var oDiv=document.getElementById("div1")
+            var curLeft=parseInt(getStyle(oDiv,"left"))
+            var curTop=parseInt(getStyle(oDiv,"top"))
+
+            switch(oEvent.keyCode)
+            {
+                case 37:oDiv.style.left=curLeft-10+"px";
+                break;
+                case 39:oDiv.style.left=curLeft+10+"px";
+                break;
+                case 38:oDiv.style.top=curTop-10+"px";
+                break;
+                case 40:oDiv.style.top=curTop+10+"px";
+                break;
+                default:
+                break;
+            }
+        }
+    </script>
+    <style>
+        #div1{width: 200px;height: 200px;background-color: red;position: absolute;left: 0;top: 0}
+    </style>
+</head>
+<body>
+    <div id="div1"></div>
+</body>
+</html>

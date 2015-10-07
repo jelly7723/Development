@@ -1,0 +1,24 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <title>jq与js</title>
+    <script src="../jquery-2.1.4.js"></script>
+    <script>
+        window.onload=function()
+        {
+            document.getElementById("ppp").style.color="red";
+            //会出现错误，因为没有ppp这个id，无法找到，所以出错。但是在jq中不会出错
+        }
+
+        $(document).ready(function()
+        {
+            $("#ppp").css("color","red")
+            //不会出错，个人猜测，应该是jq的源代码中写了if判断，如果if(true)，即存在该id，则执行相关代码
+        })
+    </script>
+</head>
+<body>
+    <p id="ppp">你妈炸了</p>
+</body>
+</html>

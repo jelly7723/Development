@@ -1,0 +1,20 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <title>数组的转换方法</title>
+    <script>
+    var colors=["red","blue","black","yellow"]
+    //显式调用tostring方法
+    alert(colors.toString())
+    //没有添加tostring方法，但是会在后台自动添加该方法
+    alert(colors)
+    //join方法，可以在join("")加上任意值，然后数组就会以该值进行切割
+    alert(colors.join("||"))
+    //三种方法都不影响原数组
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

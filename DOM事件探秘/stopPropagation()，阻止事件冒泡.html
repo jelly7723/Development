@@ -1,0 +1,33 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <title>stopPropagation()，阻止事件冒泡</title>
+    <script>
+    window.onload=function()
+    {
+        var oDiv=document.getElementsByTagName("div")[0]
+        var btn=document.getElementsByTagName("input")[0]
+        oDiv.onclick=function()
+        {
+            alert("div被点击了")
+
+        }
+        btn.onclick=function(ev)
+        {
+            alert("btn被点击了")
+            var oEvent=ev||event
+            //oEvent.cancelBubble=true
+            //上面方法一，阻止事件冒泡，IE8以下使用，这是一个属性不是方法。
+            oEvent.stopPropagation()
+            //方法二，IE以外的方法。
+        }
+    }
+    </script>
+</head>
+<body>
+    <div>
+        <input type="button" />
+    </div>
+</body>
+</html>
